@@ -20,17 +20,33 @@ $(document).ready(function() {
             // Create a GeoJSON layer and add it to the map
             L.geoJSON(data, {
                 style: function(feature) {
+                    var jhbColour = 'rgb(0, 255, 0)';
+                    var defaultColour = 'rgb(0, 0, 255)'
                     if (feature.properties.shapeName === "City of Johannesburg") {
                         return {
-                            color: 'rgb(0, 255, 0)',  // Set the color to RGB value (0, 255, 0) for Johannesburg Metropolitan
+                            color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
                             weight: 2,
-                            opacity: 1
+                            opacity: 1,
+                            fillColor: jhbColour,
+                            fillOpacity: 0.5
                         };
-                    } else {
+                    }
+                    else if (feature.properties.shapeName === "City of Tshwane"){
                         return {
-                            color: 'rgb(255, 0, 0)',  // Set the color to RGB value (255, 0, 0) for all other municipalities
+                            color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
                             weight: 2,
-                            opacity: 1
+                            opacity: 1,
+                            fillColor: jhbColour,
+                            fillOpacity: 0.5
+                        };
+                    }
+                    else {
+                        return {
+                            color: defaultColour,  // Set the color to RGB value (255, 0, 0) for all other municipalities
+                            weight: 2,
+                            opacity: 1,
+                            fillColour: defaultColour,
+                            fillOpacity: 0.5,
                         };
                     }
                 }
