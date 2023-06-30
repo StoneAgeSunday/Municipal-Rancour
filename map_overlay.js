@@ -12,9 +12,25 @@ $(document).ready(function() {
     // Set the custom tile layer as the base layer
     map.addLayer(customTileLayer);
 
+    fetch('https://raw.githubusercontent.com/StoneAgeSunday/Municipal-Rancour/main/Maps/geoBoundaries-ZAF-ADM2-all/geoBoundaries-ZAF-ADM2.geojson')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            // Create a GeoJSON layer and add it to the map
+            L.geoJSON(data, {
+                style: {
+                    color: 'red',  // Customize the boundary line color
+                    weight: 2,     // Customize the boundary line weight
+                    opacity: 1     // Customize the boundary line opacity
+                }
+            }).addTo(map);
+        });
+    /*
     $.getJSON("//https://github.com/StoneAgeSunday/Municipal-Rancour/blob/main/Maps/geoBoundaries-ZAF-ADM2-all/geoBoundaries-ZAF-ADM2.geojson", function(data) {
         L.geoJSON(data).addTo(map);
     });
+    */
     /*
     // Example GeoJSON data
     var geojsonData = {
