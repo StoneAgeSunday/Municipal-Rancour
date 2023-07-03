@@ -12,47 +12,90 @@ $(document).ready(function() {
     // Set the custom tile layer as the base layer
     map.addLayer(customTileLayer);
 
-    fetch('https://raw.githubusercontent.com/StoneAgeSunday/Municipal-Rancour/main/Maps/geoBoundaries-ZAF-ADM2-all/geoBoundaries-ZAF-ADM2.geojson')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            // Create a GeoJSON layer and add it to the map
-            L.geoJSON(data, {
-                style: function(feature) {
-                    var jhbColour = 'rgb(0, 255, 0)';
-                    var defaultColour = 'rgb(0, 0, 255)'
-                    if (feature.properties.shapeName === "City of Johannesburg") {
-                        return {
-                            color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
-                            weight: 2,
-                            opacity: 1,
-                            fillColor: jhbColour,
-                            fillOpacity: 0.5
-                        };
-                    }
-                    else if (feature.properties.shapeName === "City of Tshwane"){
-                        return {
-                            color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
-                            weight: 2,
-                            opacity: 1,
-                            fillColor: jhbColour,
-                            fillOpacity: 0.5
-                        };
-                    }
-                    else {
-                        return {
-                            color: defaultColour,  // Set the color to RGB value (255, 0, 0) for all other municipalities
-                            weight: 2,
-                            opacity: 1,
-                            fillColour: defaultColour,
-                            fillOpacity: 0.5,
-                        };
-                    }
+async function loadGeoJSON(){
+    try{
+        const response = await fetch('https://raw.githubusercontent.com/StoneAgeSunday/Municipal-Rancour/main/Maps/geoBoundaries-ZAF-ADM2-all/geoBoundaries-ZAF-ADM2.geojson');
+        const jsonData = await response.json();
+
+        //create a geoJSON layer and add it to the map
+        L.geoJSON(jsonData, {
+            style: function(feature) {
+                var jhbColour = 'rgb(0, 255, 0)';
+                var defaultColour = 'rgb(0, 0, 255)'
+                if (feature.properties.shapeName === "City of Johannesburg") {
+                    return {
+                        color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
+                        weight: 2,
+                        opacity: 1,
+                        fillColor: jhbColour,
+                        fillOpacity: 0.5
+                    };
                 }
-            }).addTo(map)
-        });
-    });
+                else if (feature.properties.shapeName === "City of Tshwane"){
+                    return {
+                        color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
+                        weight: 2,
+                        opacity: 1,
+                        fillColor: jhbColour,
+                        fillOpacity: 0.5
+                    };
+                }
+                else {
+                    return {
+                        color: defaultColour,  // Set the color to RGB value (255, 0, 0) for all other municipalities
+                        weight: 2,
+                        opacity: 1,
+                        fillColour: defaultColour,
+                        fillOpacity: 0.5,
+                    };
+                }
+            }
+        }).addTo(map);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+}
+
+loadGeoJSON();
+});
+    /*
+    const response = await fetch('https://raw.githubusercontent.com/StoneAgeSunday/Municipal-Rancour/main/Maps/geoBoundaries-ZAF-ADM2-all/geoBoundaries-ZAF-ADM2.geojson');
+    const jsonData = await response.json();
+
+    L.geoJSON(jsonData, {
+        style: function(feature) {
+            var jhbColour = 'rgb(0, 255, 0)';
+            var defaultColour = 'rgb(0, 0, 255)'
+            if (feature.properties.shapeName === "City of Johannesburg") {
+                return {
+                    color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
+                    weight: 2,
+                    opacity: 1,
+                    fillColor: jhbColour,
+                    fillOpacity: 0.5
+                };
+            }
+            else if (feature.properties.shapeName === "City of Tshwane"){
+                return {
+                    color: jhbColour,  // Set the color to RGB value (0, 255, 0) for City of Joburg
+                    weight: 2,
+                    opacity: 1,
+                    fillColor: jhbColour,
+                    fillOpacity: 0.5
+                };
+            }
+            else {
+                return {
+                    color: defaultColour,  // Set the color to RGB value (255, 0, 0) for all other municipalities
+                    weight: 2,
+                    opacity: 1,
+                    fillColour: defaultColour,
+                    fillOpacity: 0.5,
+                };
+            }
+        }
+    }).addTo(map); //we need to add updated geoJSON data  at every step of the animation
+    */
         /*
         .then(function(data) {
             // Create a GeoJSON layer and add it to the map
