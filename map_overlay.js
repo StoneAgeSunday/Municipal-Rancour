@@ -29,7 +29,7 @@ $(document).ready(function() {
                     weight: 2,
                     opacity: 1,
                     fillColor: 'rgb(255, 0, 0)',
-                    fillOpacity: 0.2
+                    fillOpacity: 0.5
                 }
             }).addTo(map);
 
@@ -71,7 +71,7 @@ $(document).ready(function() {
 
                     if (progress < 1) {
                         var currentColor = getColorTransition(initialColor, targetColor, progress);
-
+                        /*
                         var johannesburgStyle = {
                             color: 'rgb(255, 255, 255)',
                             weight: 2,
@@ -88,6 +88,12 @@ $(document).ready(function() {
                         });
                         map.addLayer(johannesburgLayer);
                         //johannesburgLayer.addTo(map);
+                        */
+                        // Update the style of the existing Johannesburg layer
+                        johannesburgLayer.setStyle({
+                            fillColor: currentColor,
+                        });
+
                         frameNum += 1;
                         console.log(frameNum.toString() + "th frame about to be drawn");
                         setTimeout(() => requestAnimationFrame((timestamp) => animateColor(timestamp, initialColor, targetColor)), 1000);
@@ -117,6 +123,7 @@ $(document).ready(function() {
                     map.removeLayer(layer);
                 })
                 */
+                /*
                 map.removeLayer(municipalLayer);
                 municipalLayer = L.geoJSON(jsonData, {
                     filter: function(feature) {
@@ -133,6 +140,7 @@ $(document).ready(function() {
 
 
                 // Create the Johannesburg layer
+                map.removeLayer(johannesburgLayer);
                 johannesburgLayer = L.geoJSON(jsonData, {
                     filter: function(feature) {
                         return feature.properties.shapeName === "City of Johannesburg";
@@ -145,6 +153,16 @@ $(document).ready(function() {
                         fillOpacity: 0.5
                     }
                 }).addTo(map);
+                */
+                municipalLayer.setStyle({
+                    fillColor: 'rgb(255, 0, 0)',
+                    fillOpacity: 0.5,
+                });
+                // Update the style of the existing Johannesburg layer to reset it to white
+                johannesburgLayer.setStyle({
+                    fillColor: 'rgb(255, 255, 255)',
+                    fillOpacity: 0.5,
+                });
             }
 
             function showLayers(){
