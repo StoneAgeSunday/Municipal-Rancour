@@ -1,0 +1,181 @@
+It occurs that we could make a table for each municipality. Then the financial period could be the primary key.
+
+Balance Sheet Dataset
+    Community Wealth
+        Reserves +0300 *11
+        Accumulated Surplus +0500
+    Total noncurrent labilities -1000 *12
+    Current Liabilities
+        Creditors -2600
+        total current liabilities -1600 *12
+    Assets
+        Property Plant and Equipment +1300
+        Investment Property +1401 *12
+        Agricultural +1403 *12
+        Biological +1404
+        Intangible +1405
+        Inventory +1900 *12
+        Consumer debtors +2000 *12
+        Other debtors +2010 *12
+Capital Acquisition
+    Infrastructure
+        Roads* +0300 *11
+        Water reservoirs & reticulation +0400 *11
+        Electricity reticulation* +0600 *11
+        Housing +0800 *11
+        Gas +1100 *11
+        Street Lighting*
+        Sub-total Infrastructure +1300 *11
+    Community
+        Establishment of Parks and gardens +1500 *11
+        Sportsfields* +1600 *11
+        Community Halls* +1700 *11
+        Libraries +1800 *11
+        Clinics +2000 *11
+        Museums and Art Galleries* +2100 *11
+        Subtotal community +2300 *11
+    Heritage Assets
+        Heritage Assets +2311 *11
+    Investment Properties +2321 *11
+    Other assets
+        Markets +2900 *11
+        Airports +3000 *11
+        Security Measures +3100 *11
+        Civic Land and buildings +3120 *11
+    Specialisied Vehicles
+        Refuse +3500 *11
+        Fire +3600 *1 #
+        Conservancy +3700
+        Ambulances +3800 *11
+        Buses +3900 *11 #
+    Agricultural Assets +4011 *11
+    Biological Assets (I think these are like dogs) +4021
+    Source of Finance
+        External Loans +4300 *12
+        Public contributions, donations +4600 *12
+        National Government Transfers and Grants +4700 *12
+        Provincial Govt Transfers and Grants +4701 *12
+        District municipality transfers and grants (metropolitan municipalities may not have these, but I don't know. If they don't, we shouldn't allow the user to track this for metros) +4703
+        Leases +4800 *12
+        Total Financing *11
+//33 trackable things up to here
+Cash Flow
+    Cash Receipts by Source
+        Property Rates +3010 *11
+        Propery rates: Penalties and Collection charges +3020 *12
+        Service Charges
+            Service Charges: Electricity Revenue +3030 *11
+            Service Charges: Water Revenue +3050 *11
+            Santiation Revenue +3050 *12
+            Refuse Revenue +3060 *12
+        Rental of Facilities and Equipment +3080 *12
+        Interest earned: External Investments +3090 *11
+        Interest Earned: outstanding debtors +3100 *12
+        Dividends received +3110 *12
+        Fines (how much are you spending for policing, traffic cops) +3120 *12
+        Licenses and permits +3130 *12
+    Other Cash Flows
+        Short term loans +3220 *12
+        Borrowing long term/refinancing +3230
+    Cash Payments by type
+        employee related costs -4010 *11
+        remuneration of councillors -4020 *11
+        interest paid -4040 *12
+        bulk purchases
+            electricity -4050 *11
+            water and sewer -4060 *11
+            grants and subsidies
+                paid by other municipalities +4090 *12
+                paid by other +4100 *12
+        general expenses -4110 *12
+    Other cash flow types
+        capital Assets +4140 *11
+        repayment of borrowing ?4150
+Financial Position
+    Assets
+        Current Assets
+            cash +0120 *12
+            call deposits and investments +0130 *12
+            consumer debtors +0140 *12
+            other debtors +0150 *12
+            current portion of long term receivables*
+            inventory +0170 *12
+            total +0180 *11
+        Non-current assets
+            long-term receivables*
+            investments +0210 *12
+            investment property +0220 *12
+            Property, plant and equipment
+            biological +0260 *12
+            intangible +0270 *12
+            total +0290 *0290 *11
+        total (lacking data)
+    Liabilities
+        current liabilities -0320 *12
+            bank overdraft -0330 *12
+                borrowing
+                consumer deposits
+                trade and other payables
+                provisions
+            total
+        Financial liabilities -0400 *12
+        total -0430 *11
+    net assets +0440 *11
+    community wealth/equity +0450
+        accumulated surplus +0460 *12
+        reserves +0470 *12
+        total +0480 *11
+Income and Expenditure (it seems these figures are only yearly)
+    Operating revenue
+        Property rates +0200 *12
+        Property rates: penalties ans collection charges +0300 *12
+        service charges +0400 *12
+        rent of facilities and equipment +0700 *12
+        interest earned
+            external Investments +0800 *12
+            outstanding debtors +1000 *12
+        dividends received +1100 *12
+        fines +1300 *11
+        licenses and permits +1400 *11
+        agency services
+        transfers recognised*
+            operating
+            capital
+        other revenue
+        gain on disposal of property, plant, and equipment +1800 *12
+        total +1900 *11
+        less revenue foregone
+    total direct operating revenue
+    Internal transfers
+        interest received +2300 *12
+        internal loans
+        internal recoveries
+        dividends received - internal +2600 *12
+    total operating revenue +2800 *11
+    Operating expenditure
+        employee related costs (wages, salaries) -3000 *11
+        employee rtd costs (social contributions) -3100 *11
+        remuneration of councillors -3400 *11
+        debt impairment -3500
+        collection costs -3600
+        interest expense - external borrowings
+        contracted services
+        grants and subsidies -4300 *12
+        loss on disposal of property
+        Internal transfers (activity based costing)
+            interest - internal borrowings
+        total operating expenditure -5200 *11
+    Surplus
+        operating surplus after tax, cross subsidies & share of As +5900 *11
+    Other adjustments and transfers
+        dividends paid
+        asset financing reserve
+        housing development fund
+        self-insurance reserve
+//64 things to track up to here
+
+
+
+
+    Notes:
+        It seems that, for this dataset, there are no audited actual measures. there are "actual" amounts, though.
